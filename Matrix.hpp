@@ -20,7 +20,6 @@ public:
     matrix& getMatRef();
     friend Matrix operator+(matrix &mat1, matrix &mat2);
     friend Matrix operator-(matrix &mat1, matrix &mat2);
-
 };
 
 

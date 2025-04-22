@@ -17,6 +17,18 @@ public:
     Matrix operator%(const matrix &mat1);
     Matrix operator%(const double &scalar);
     Matrix operator/(const double &scalar);
+    Matrix operator^(const int &power); // not working yet
+    Matrix operator++();
+    Matrix operator--();
+    Matrix operator~();
+    Matrix operator[](); // not implemented yet
+    Matrix operator==(const matrix &mat1);
+    Matrix operator!=(const matrix &mat1);
+    Matrix operator>(const matrix &mat1);
+    Matrix operator<(const matrix &mat1);
+    Matrix operator>=(const matrix &mat1);
+    Matrix operator<=(const matrix &mat1);
+    Matrix operator!(); // determinant
 
 
 };
