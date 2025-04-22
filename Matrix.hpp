@@ -6,6 +6,7 @@ struct matrix {
     int length;
     double **number;
 };
+
 class Matrix {
 private:
     matrix *mat;
@@ -13,6 +14,13 @@ private:
 public:
     Matrix(int length);
     ~Matrix();
+    Matrix(const Matrix &other);
+    Matrix &operator=(const Matrix &other);
+    const matrix getMat();
+    matrix& getMatRef();
+    friend Matrix operator+(matrix &mat1, matrix &mat2);
+    friend Matrix operator-(matrix &mat1, matrix &mat2);
+
 };
 
 
