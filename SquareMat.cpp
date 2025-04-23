@@ -100,36 +100,33 @@ Matrix SquareMat::operator/(const double &scalar) {
     return result;
 }
 
-//Matrix SquareMat::operator^(const int &power) {
-//    Matrix result(mat->length);
-//    if (power < 0) {
-//        throw std::invalid_argument("Power must be non-negative.");
-//    }
-//    if (power == 0) {
-//        for (int i = 0; i < mat->length; i++) {
-//            for (int j = 0; j < mat->length; j++) {
-//                if (i == j) {
-//                    result.getMatRef().number[i][j] = 1;
-//                } else {
-//                    result.getMatRef().number[i][j] = 0;
-//                }
-//            }
-//        }
-//        return result;
-//    }
-//    if (power == 1) {
-//        return *mat;
-//    }
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            result.getMatRef().number[i][j] = mat->number[i][j];
-//        }
-//    }
-//    for (int i = 0; i < power; i++) {
-//        result = result * (*mat);
-//    }
-//    return result;
-//}
+Matrix SquareMat::operator^(const int &power) {
+    Matrix result(mat->length);
+    if (power < 0) {
+        throw std::invalid_argument("Power must be non-negative.");
+    }
+    if (power == 0) {
+        for (int i = 0; i < mat->length; i++) {
+            for (int j = 0; j < mat->length; j++) {
+                if (i == j) {
+                    result.getMatRef().number[i][j] = 1;
+                } else {
+                    result.getMatRef().number[i][j] = 0;
+                }
+            }
+        }
+        return result;
+    }
+    for (int i = 0; i < mat->length; i++) {
+        for (int j = 0; j < mat->length; j++) {
+            result.getMatRef().number[i][j] = mat->number[i][j];
+        }
+    }
+    for (int i = 0; i < power; i++) {
+        result = result * (*mat);
+    }
+    return result;
+}
 
 Matrix SquareMat::operator++() {
     Matrix result(mat->length);
@@ -419,3 +416,5 @@ std::ostream& operator<<(std::ostream&, const SquareMat &mat) {
     }
     return std::cout;
 }
+
+
