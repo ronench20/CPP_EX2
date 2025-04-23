@@ -3,6 +3,7 @@
 #ifndef CPP_EX2_SQUAREMAT_HPP
 #define CPP_EX2_SQUAREMAT_HPP
 #include "Matrix.hpp"
+#include <iostream>
 
 class SquareMat{
 private:
@@ -22,13 +23,21 @@ public:
     Matrix operator--();
     Matrix operator~();
     Matrix operator[](); // not implemented yet
-    Matrix operator==(const matrix &mat1);
-    Matrix operator!=(const matrix &mat1);
-    Matrix operator>(const matrix &mat1);
-    Matrix operator<(const matrix &mat1);
-    Matrix operator>=(const matrix &mat1);
-    Matrix operator<=(const matrix &mat1);
-    Matrix operator!(); // determinant
+    bool operator==(const matrix &mat1);
+    bool operator!=(const matrix &mat1);
+    bool operator>(const matrix &mat1);
+    bool operator<(const matrix &mat1);
+    bool operator>=(const matrix &mat1);
+    bool operator<=(const matrix &mat1);
+    double operator!(); // determinant
+    SquareMat& operator+=(const matrix &mat1);
+    SquareMat& operator-=(const matrix &mat1);
+    SquareMat& operator*=(const matrix &mat1);
+    SquareMat& operator*=(const double &scalar);
+    SquareMat& operator/=(const double &scalar);
+    SquareMat& operator%=(const matrix &mat1);
+    SquareMat& operator%=(const double &scalar);
+    friend std::ostream& operator<<(std::ostream&, const SquareMat &mat);
 
 
 };
