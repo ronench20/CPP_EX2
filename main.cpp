@@ -1,26 +1,38 @@
+//ronen.chereshn@msmail.ariel.ac.il
+
 #include <iostream>
+#include "SquareMat.hpp"
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+using namespace std;
+
 int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the
-    // <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+    //cout << "create first matrix" << endl;
+    SquareMat mat1(3);
+    mat1.setValue(0, 0, 33);
+    mat1.setValue(1, 1, 2);
+    mat1.setValue(2, 2, 3);
+    cout << "Matrix 1:" << endl;
+    cout << mat1 << endl;
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code.
-        // We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-        // breakpoint for you, but you can always add more by pressing
-        // <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-    }
+    SquareMat mat2(3);
+    mat2.setValue(0, 0, 1);
+    mat2.setValue(0, 1, 2);
+    mat2.setValue(0, 2, 3);
+    cout << "Matrix 2:" << endl;
+    cout << mat2 << endl;
+
+    cout << "Matrix 1 + Matrix 2:" << endl;
+    SquareMat plus = mat1 + mat2;
+    cout << plus << endl;
+
+    cout << "Matrix 1 - Matrix 2:" << endl;
+    SquareMat minus = mat1 - mat2;
+    cout << minus << endl;
+
+    cout << "-Matrix 1:" << endl;
+    SquareMat minus1 = -mat1;
+    cout << minus1 << endl;
 
 
     return 0;
 }
-
-// TIP See CLion help at <a
-// href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
-//  Also, you can try interactive lessons for CLion by selecting
-//  'Help | Learn IDE Features' from the main menu.

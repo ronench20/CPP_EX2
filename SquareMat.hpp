@@ -7,35 +7,38 @@
 
 class SquareMat{
 private:
-    matrix *mat;
+    Matrix *mat;
 
 public:
-    Matrix operator+(const matrix &mat1);
-    Matrix operator-(const matrix &mat1);
-    Matrix operator-();
-    Matrix operator*(const matrix &mat1);
+    SquareMat(int length);
+    ~SquareMat();
+    void setValue(int row, int col, double value);
+    SquareMat operator+(const SquareMat& other) const;
+    SquareMat operator-(const SquareMat& other) const;
+    SquareMat operator-();
+    Matrix operator*(const Matrix &mat1);
     Matrix operator*(const double &scalar);
-    Matrix operator%(const matrix &mat1);
+    Matrix operator%(const Matrix &mat1);
     Matrix operator%(const double &scalar);
     Matrix operator/(const double &scalar);
     Matrix operator^(const int &power); // not working yet
     Matrix operator++();
     Matrix operator--();
     Matrix operator~();
-    Matrix operator[](); // not implemented yet
-    bool operator==(const matrix &mat1);
-    bool operator!=(const matrix &mat1);
-    bool operator>(const matrix &mat1);
-    bool operator<(const matrix &mat1);
-    bool operator>=(const matrix &mat1);
-    bool operator<=(const matrix &mat1);
+    Matrix operator[](int index); // not implemented yet
+    bool operator==(const Matrix &mat1);
+    bool operator!=(const Matrix &mat1);
+    bool operator>(const Matrix &mat1);
+    bool operator<(const Matrix &mat1);
+    bool operator>=(const Matrix &mat1);
+    bool operator<=(const Matrix &mat1);
     double operator!(); // determinant
-    SquareMat& operator+=(const matrix &mat1);
-    SquareMat& operator-=(const matrix &mat1);
-    SquareMat& operator*=(const matrix &mat1);
+    SquareMat& operator+=(const Matrix &mat1);
+    SquareMat& operator-=(const Matrix &mat1);
+    SquareMat& operator*=(const Matrix &mat1);
     SquareMat& operator*=(const double &scalar);
     SquareMat& operator/=(const double &scalar);
-    SquareMat& operator%=(const matrix &mat1);
+    SquareMat& operator%=(const Matrix &mat1);
     SquareMat& operator%=(const double &scalar);
     friend std::ostream& operator<<(std::ostream&, const SquareMat &mat);
 
