@@ -8,7 +8,6 @@ Matrix::Matrix(int length) : length(length) {
     for (int i = 0; i < length; i++) {
         number[i] = new double[length];
         for (int j = 0; j < length; j++) {
-//            std::cout << "Enter number for row " << i << " and column " << j << ": ";
             number[i][j] = 0;
         }
     }

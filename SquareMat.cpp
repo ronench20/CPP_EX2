@@ -137,34 +137,34 @@ SquareMat SquareMat::operator/(const double &scalar) {
     return result;
 }
 
-//SquareMat SquareMat::operator^(const int &power) {
-//    SquareMat result(mat->getLength());
-//    if (power < 0) {
-//        throw std::invalid_argument("Power must be non-negative.");
-//    }
-//    if (power == 0) {
-//        for (int i = 0; i < mat->getLength(); i++) {
-//            for (int j = 0; j < mat->getLength(); j++) {
-//                if (i == j) {
-//                    result.setValue(i,j,1);
-//                }
-//                else {
-//                    result.setValue(i,j,0);
-//                }
-//            }
-//        }
-//        return result;
-//    }
-//    for (int i = 0; i < mat->getLength(); i++) {
-//        for (int j = 0; j < mat->getLength(); j++) {
-//            result.setValue(i,j,mat->getNumber()[i][j]);
-//        }
-//    }
-//    for (int i = 0; i < power; i++) {
-//        result = result * (*mat);
-//    }
-//    return result;
-//}
+SquareMat SquareMat::operator^(const int &power) {
+    SquareMat result(mat->getLength());
+    if (power < 0) {
+        throw std::invalid_argument("Power must be non-negative.");
+    }
+    if (power == 0) {
+        for (int i = 0; i < mat->getLength(); i++) {
+            for (int j = 0; j < mat->getLength(); j++) {
+                if (i == j) {
+                    result.setValue(i,j,1);
+                }
+                else {
+                    result.setValue(i,j,0);
+                }
+            }
+        }
+        return result;
+    }
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            result.setValue(i,j,mat->getNumber()[i][j]);
+        }
+    }
+    for (int i = 1; i < power; i++) {
+        result = result * (*this);
+    }
+    return result;
+}
 
 SquareMat SquareMat::operator++() {
     SquareMat result(mat->getLength());
@@ -196,254 +196,250 @@ SquareMat SquareMat::operator~() {
     return result;
 }
 
-//bool SquareMat::operator==(const matrix &mat1) {
-//    double sum1 = 0;
-//    double sum2 = 0;
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            sum1 += mat->number[i][j];
-//        }
-//    }
-//    for (int i = 0; i < mat1.length; i++) {
-//        for (int j = 0; j < mat1.length; j++) {
-//            sum2 += mat1.number[i][j];        }
-//    }
-//    if (sum1 == sum2){
-//        return true;
-//    }
-//    else{
-//        return false;
-//    }
-//}
-//
-//bool SquareMat::operator!=(const matrix &mat1) {
-//    double sum1 = 0;
-//    double sum2 = 0;
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            sum1 += mat->number[i][j];
-//        }
-//    }
-//    for (int i = 0; i < mat1.length; i++) {
-//        for (int j = 0; j < mat1.length; j++) {
-//            sum2 += mat1.number[i][j];
-//        }
-//    }
-//    if (sum1 != sum2){
-//        return true;
-//    }
-//    else{
-//        return false;
-//    }
-//}
-//bool SquareMat::operator>(const matrix &mat1) {
-//    double sum1 = 0;
-//    double sum2 = 0;
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            sum1 += mat->number[i][j];
-//        }
-//    }
-//    for (int i = 0; i < mat1.length; i++) {
-//        for (int j = 0; j < mat1.length; j++) {
-//            sum2 += mat1.number[i][j];
-//        }
-//    }
-//    if (sum1 > sum2){
-//        return true;
-//    }
-//    else{
-//        return false;
-//    }
-//}
-//
-//bool SquareMat::operator<(const matrix &mat1) {
-//    double sum1 = 0;
-//    double sum2 = 0;
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            sum1 += mat->number[i][j];
-//        }
-//    }
-//    for (int i = 0; i < mat1.length; i++) {
-//        for (int j = 0; j < mat1.length; j++) {
-//            sum2 += mat1.number[i][j];
-//        }
-//    }
-//    if (sum1 < sum2){
-//        return true;
-//    }
-//    else{
-//        return false;
-//    }
-//}
-//
-//bool SquareMat::operator>=(const matrix &mat1) {
-//    double sum1 = 0;
-//    double sum2 = 0;
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            sum1 += mat->number[i][j];
-//        }
-//    }
-//    for (int i = 0; i < mat1.length; i++) {
-//        for (int j = 0; j < mat1.length; j++) {
-//            sum2 += mat1.number[i][j];
-//        }
-//    }
-//    if (sum1 >= sum2){
-//        return true;
-//    }
-//    else{
-//        return false;
-//    }
-//}
-//
-//bool SquareMat::operator<=(const matrix &mat1) {
-//    double sum1 = 0;
-//    double sum2 = 0;
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            sum1 += mat->number[i][j];
-//        }
-//    }
-//    for (int i = 0; i < mat1.length; i++) {
-//        for (int j = 0; j < mat1.length; j++) {
-//            sum2 += mat1.number[i][j];
-//        }
-//    }
-//    if (sum1 <= sum2){
-//        return true;
-//    }
-//    else{
-//        return false;
-//    }
-//}
-//
-//double SquareMat::operator!() {
-//    double det = 0;
-//    if (mat->length == 1) {
-//        return mat->number[0][0];
-//    }
-//    if (mat->length == 2) {
-//        return mat->number[0][0] * mat->number[1][1] - mat->number[0][1] * mat->number[1][0];
-//    }
-//    for (int i = 0; i < mat->length; i++) {
-//        int size = mat->length - 1;
-//        matrix* subMat = new matrix;
-//        subMat->length = size;
-//        subMat->number = new double*[size];
-//        for (int j = 0; j < size; j++) {
-//            subMat->number[j] = new double[size];
-//            int subCol = 0;
-//            for (int k = 0; k < mat->length; k++) {
-//                if (k != i) {
-//                    subMat->number[j][subCol] = mat->number[j + 1][k];
-//                }
-//            }
-//        }
-//        SquareMat subSquareMat(size);
-//        subSquareMat.mat = subMat;
-//
-//        double sign = 1 - 2 * (i % 2); // possible 1 - 2 * (col & 1)
-//        det += sign * mat->number[0][i] * subSquareMat.operator!();
-//
-//        for (int j = 0; j < size; j++) {
-//            delete[] subMat->number;
-//            delete subMat;
-//        }
-//    }
-//    return det;
-//}
-//
-//SquareMat& SquareMat::operator+=(const matrix &mat1) {
-//    if (mat->length != mat1.length) {
-//        throw std::invalid_argument("Matrix sizes do not match.");
-//    }
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            mat->number[i][j] += mat1.number[i][j];
-//        }
-//    }
-//    return *this;
-//}
-//
-//SquareMat& SquareMat::operator-=(const matrix &mat1) {
-//    if (mat->length != mat1.length) {
-//        throw std::invalid_argument("Matrix sizes do not match.");
-//    }
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            mat->number[i][j] -= mat1.number[i][j];
-//        }
-//    }
-//    return *this;
-//}
-//
-//SquareMat& SquareMat::operator*=(const matrix &mat1) {
-//    if (mat->length != mat1.length) {
-//        throw std::invalid_argument("Matrix sizes do not match.");
-//    }
-//    double **temp = new double*[mat->length];
-//    for (int i = 0; i < mat->length; i++) {
-//        temp[i] = new double[mat->length];
-//        for (int j = 0; j < mat->length; j++) {
-//            temp[i][j] = 0;
-//            for (int k = 0; k < mat->length; k++) {
-//                temp[i][j] += mat->number[i][k] * mat1.number[k][j];
-//            }
-//        }
-//    }
-//    for (int i = 0; i < mat->length; ++i) {
-//        delete[] mat->number[i];
-//    }
-//    delete[] mat->number;
-//    mat->number = temp;
-//    return *this;
-//}
-//
-//SquareMat& SquareMat::operator*=(const double &scalar) {
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            mat->number[i][j] *= scalar;
-//        }
-//    }
-//    return *this;
-//}
-//
-//SquareMat& SquareMat::operator/=(const double &scalar) {
-//    if (scalar == 0) {
-//        throw std::invalid_argument("Division by zero.");
-//    }
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            mat->number[i][j] /= scalar;
-//        }
-//    }
-//    return *this;
-//}
-//
-//SquareMat& SquareMat::operator%=(const matrix &mat1) {
-//    if (mat->length != mat1.length) {
-//        throw std::invalid_argument("Matrix sizes do not match.");
-//    }
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            mat->number[i][j] *= mat1.number[i][j];
-//        }
-//    }
-//    return *this;
-//}
-//
-//SquareMat& SquareMat::operator%=(const double &scalar) {
-//    for (int i = 0; i < mat->length; i++) {
-//        for (int j = 0; j < mat->length; j++) {
-//            mat->number[i][j] = std::fmod(mat->number[i][j], scalar);
-//        }
-//    }
-//    return *this;
-//}
-//
+bool SquareMat::operator==(const SquareMat& other) const {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            sum1 += mat->getNumber()[i][j];
+        }
+    }
+    for (int i = 0; i < other.mat->getLength(); i++) {
+        for (int j = 0; j < other.mat->getLength(); j++) {
+            sum2 += other.mat->getNumber()[i][j];
+        }
+    }
+    if (sum1 == sum2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool SquareMat::operator!=(const SquareMat& other) const {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            sum1 += mat->getNumber()[i][j];
+        }
+    }
+    for (int i = 0; i < other.mat->getLength(); i++) {
+        for (int j = 0; j < other.mat->getLength(); j++) {
+            sum2 += other.mat->getNumber()[i][j];
+        }
+    }
+    if (sum1 != sum2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool SquareMat::operator>(const SquareMat& other) const {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            sum1 += mat->getNumber()[i][j];
+        }
+    }
+    for (int i = 0; i < other.mat->getLength(); i++) {
+        for (int j = 0; j < other.mat->getLength(); j++) {
+            sum2 += other.mat->getNumber()[i][j];
+        }
+    }
+    if (sum1 > sum2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool SquareMat::operator<(const SquareMat& other) const {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            sum1 += mat->getNumber()[i][j];
+        }
+    }
+    for (int i = 0; i < other.mat->getLength(); i++) {
+        for (int j = 0; j < other.mat->getLength(); j++) {
+            sum2 += other.mat->getNumber()[i][j];
+        }
+    }
+    if (sum1 < sum2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool SquareMat::operator>=(const SquareMat& other) const {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            sum1 += mat->getNumber()[i][j];
+        }
+    }
+    for (int i = 0; i < other.mat->getLength(); i++) {
+        for (int j = 0; j < other.mat->getLength(); j++) {
+            sum2 += other.mat->getNumber()[i][j];
+        }
+    }
+    if (sum1 >= sum2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool SquareMat::operator<=(const SquareMat& other) const {
+    double sum1 = 0;
+    double sum2 = 0;
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            sum1 += mat->getNumber()[i][j];
+        }
+    }
+    for (int i = 0; i < other.mat->getLength(); i++) {
+        for (int j = 0; j < other.mat->getLength(); j++) {
+            sum2 += other.mat->getNumber()[i][j];
+        }
+    }
+    if (sum1 <= sum2){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+double SquareMat::operator!() {
+    double det = 0;
+    if (mat->getLength() == 1) {
+        return mat->getNumber()[0][0];
+    }
+    if (mat->getLength() == 2) {
+        return mat->getNumber()[0][0] * mat->getNumber()[1][1] - mat->getNumber()[0][1] * mat->getNumber()[1][0];
+    }
+    for (int i = 0; i < mat->getLength(); i++) {
+        int size = mat->getLength() - 1;
+        SquareMat subMat(size);
+        for (int j = 0; j < size; j++) {
+            int subCol = 0;
+            for (int k = 0; k < mat->getLength(); k++) {
+                if (k != i) {
+                    subMat.setValue(j, subCol, mat->getNumber()[j + 1][k]);
+                    subCol++;
+                }
+            }
+        }
+        double sign;
+        if (i % 2 == 0) {
+            sign = 1;
+        } else {
+            sign = -1;
+        }
+        det += sign * mat->getNumber()[0][i] * (!subMat);
+    }
+    return det;
+}
+
+SquareMat& SquareMat::operator+=(const SquareMat& other){
+    if (mat->getLength() != other.mat->getLength()) {
+        throw std::invalid_argument("Matrix sizes do not match.");
+    }
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            mat->getNumber()[i][j] += other.mat->getNumber()[i][j];
+        }
+    }
+    return *this;
+}
+
+SquareMat& SquareMat::operator-=(const SquareMat& other) {
+    if (mat->getLength() != other.mat->getLength()) {
+        throw std::invalid_argument("Matrix sizes do not match.");
+    }
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            mat->getNumber()[i][j] -= other.mat->getNumber()[i][j];
+        }
+    }
+    return *this;
+}
+
+SquareMat& SquareMat::operator*=(const SquareMat& other) {
+    if (mat->getLength() != other.mat->getLength()) {
+        throw std::invalid_argument("Matrix sizes do not match.");
+    }
+    double **temp = new double*[mat->getLength()];
+    for (int i = 0; i < mat->getLength(); i++) {
+        temp[i] = new double[mat->getLength()];
+        for (int j = 0; j < mat->getLength(); j++) {
+            temp[i][j] = 0;
+            for (int k = 0; k < mat->getLength(); k++) {
+                temp[i][j] += mat->getNumber()[i][k] * other.mat->getNumber()[k][j];
+            }
+        }
+    }
+    for (int i = 0; i < mat->getLength(); ++i) {
+        delete[] mat->getNumber()[i];
+    }
+    delete[] mat->getNumber();
+    return *this;
+}
+
+SquareMat& SquareMat::operator*=(const double &scalar) {
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            mat->getNumber()[i][j] *= scalar;
+        }
+    }
+    return *this;
+}
+
+SquareMat& SquareMat::operator/=(const double &scalar) {
+    if (scalar == 0) {
+        throw std::invalid_argument("Division by zero.");
+    }
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            mat->getNumber()[i][j] /= scalar;
+        }
+    }
+    return *this;
+}
+
+SquareMat& SquareMat::operator%=(const SquareMat& other) {
+    if (mat->getLength() != other.mat->getLength()) {
+        throw std::invalid_argument("Matrix sizes do not match.");
+    }
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            mat->getNumber()[i][j] *= other.mat->getNumber()[i][j];
+        }
+    }
+    return *this;
+}
+
+SquareMat& SquareMat::operator%=(const double &scalar) {
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            mat->getNumber()[i][j] = std::fmod(mat->getNumber()[i][j], scalar);
+        }
+    }
+    return *this;
+}
+
 std::ostream& operator<<(std::ostream& os, const SquareMat& mat) {
     for (int i = 0; i < mat.mat->getLength(); i++) {
         os << "[ ";
@@ -455,14 +451,14 @@ std::ostream& operator<<(std::ostream& os, const SquareMat& mat) {
     return os;
 }
 
-//
-//Matrix SquareMat ::operator[](int index) {
-//    if (index < 0 || index >= mat->length) {
-//        throw std::out_of_range("Index out of range.");
-//    }
-//    Matrix result(mat->length);
-//    for (int i = 0; i < mat->length; i++) {
-//        result.getMatRef().number[i][0] = mat->number[index][i];
-//    }
-//    return result;
-//}
+
+SquareMat SquareMat::operator[](int index) {
+    if (index < 0 || index >= mat->getLength()) {
+        throw std::out_of_range("Index out of range.");
+    }
+    SquareMat result(mat->getLength());
+    for (int i = 0; i < mat->getLength(); i++) {
+        result.setValue(i,0,mat->getNumber()[index][i]);
+    }
+    return result;
+}

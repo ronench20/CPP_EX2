@@ -21,27 +21,26 @@ public:
     SquareMat operator%(const SquareMat& other) const;
     SquareMat operator%(const double &scalar);
     SquareMat operator/(const double &scalar);
-    SquareMat operator^(const int &power); // not working yet
+    SquareMat operator^(const int &power); // not implemented in the main
     SquareMat operator++();
     SquareMat operator--();
     SquareMat operator~();
-    Matrix operator[](int index); // not implemented yet
-    bool operator==(const Matrix &mat1);
-    bool operator!=(const Matrix &mat1);
-    bool operator>(const Matrix &mat1);
-    bool operator<(const Matrix &mat1);
-    bool operator>=(const Matrix &mat1);
-    bool operator<=(const Matrix &mat1);
-    double operator!(); // determinant
-    SquareMat& operator+=(const Matrix &mat1);
-    SquareMat& operator-=(const Matrix &mat1);
-    SquareMat& operator*=(const Matrix &mat1);
+    SquareMat operator[](int index); // not sure if works
+    bool operator==(const SquareMat& other) const;
+    bool operator!=(const SquareMat& other) const;
+    bool operator>(const SquareMat& other) const;
+    bool operator<(const SquareMat& other) const;
+    bool operator>=(const SquareMat& other) const;
+    bool operator<=(const SquareMat& other) const;
+    double operator!();
+    SquareMat& operator+=(const SquareMat& other);
+    SquareMat& operator-=(const SquareMat& other);
+    SquareMat& operator*=(const SquareMat& other);
     SquareMat& operator*=(const double &scalar);
     SquareMat& operator/=(const double &scalar);
-    SquareMat& operator%=(const Matrix &mat1);
+    SquareMat& operator%=(const SquareMat& other);
     SquareMat& operator%=(const double &scalar);
     friend std::ostream& operator<<(std::ostream&, const SquareMat &mat);
-
 
 };
 

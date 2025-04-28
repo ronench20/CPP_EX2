@@ -68,5 +68,28 @@ int main() {
     SquareMat trans = ~mat1;
     cout << trans << endl;
 
+    cout << "Matrix 1 == Matrix 2:" << endl;
+    cout << (mat1 == mat2) << endl;
+
+    cout << "Matrix 1 != Matrix 2:" << endl;
+    cout << (mat1 != mat2) << endl;
+
+    cout << "Matrix 1 > Matrix 2:" << endl;
+    cout << (mat1 > mat2) << endl;
+
+    cout << "Matrix 1 < Matrix 2:" << endl;
+    cout << (mat1 < mat2) << endl;
+
+    cout << "Matrix 1 >= Matrix 2:" << endl;
+    cout << (mat1 >= mat2) << endl;
+
+    cout << "Matrix 1 <= Matrix 2:" << endl;
+    cout << (mat1 <= mat2) << endl;
+
+    mat1.setValue(0,2,6);
+    cout << "Matrix 1 determinant:" << endl;
+    cout << (!mat1) << endl;
+
+    mat1.setValue(0,2,3);
     return 0;
 }
