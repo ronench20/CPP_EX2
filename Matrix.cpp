@@ -58,3 +58,6 @@ int Matrix::getLength() const {
     return length;
 }
 
+void Matrix::setNumber(double** newNumber) {
+    number = newNumber;
+}

@@ -14,6 +14,7 @@ make clean          #Deletes all .o files
 ```
 ## In this project I had to implement the following operators:
 - +, -, *, /, %, ++, --, +=, -=, *=, /=, %=, ==, !=, <, >, <=, >=
+- 
 Those operators are declared in SquareMat.hpp and implemented in SquareMat.cpp.
 
 ## The project also includes a test file that tests the operators and a main file that demonstrates the use of the operators.

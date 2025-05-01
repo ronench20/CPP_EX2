@@ -6,12 +6,8 @@
 using namespace std;
 
 int main() {
-    //cout << "create first matrix" << endl;
     SquareMat mat1(3);
     double sum = 0;
-//    mat1.setValue(0, 0, 33);
-//    mat1.setValue(1, 1, 2);
-//    mat1.setValue(2, 2, 3);
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             sum++;
@@ -55,6 +51,10 @@ int main() {
     cout << "Matrix 1 / 4:" << endl;
     SquareMat div = mat1 / 4;
     cout << div << endl;
+
+//    cout << "Matrix 1 ^ 3:" << endl;
+//    SquareMat pow = mat1 ^ 3;
+//    cout << pow << endl;
 
     cout << "Matrix 1++" << endl;
     SquareMat inc = ++mat1;

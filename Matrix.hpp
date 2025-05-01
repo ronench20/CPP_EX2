@@ -13,11 +13,11 @@ public:
     ~Matrix();
     Matrix(const Matrix& other);
     Matrix& operator=(const Matrix& other);
-
-
     double** getNumber() const;
     int getLength() const;
+    void setNumber(double** newNumber);
 };
+
 
 
 #endif //CPP_EX2_MATRIX_HPP

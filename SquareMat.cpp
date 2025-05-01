@@ -20,11 +20,16 @@ void SquareMat::setValue(int row, int col, double value) {
     mat->getNumber()[row][col] = value;
 }
 
-
+double SquareMat::getValue(int row, int col) const {
+    if (row < 0 || row >= mat->getLength() || col < 0 || col >= mat->getLength()) {
+        throw std::out_of_range("Index out of range.");
+    }
+    return mat->getNumber()[row][col];
+}
 
 SquareMat SquareMat::operator+(const SquareMat& other) const {
     if (mat->getLength() != other.mat->getLength()) {
-        throw std::invalid_argument("Matrix sizes do not match.");
+        throw std::invalid_argument("Matrix sizes do not match");
     }
 
     SquareMat result(mat->getLength());
@@ -72,23 +77,23 @@ SquareMat SquareMat::operator*(const SquareMat& other) const {
     SquareMat result(mat->getLength());
     for (int i = 0; i < mat->getLength(); i++) {
         for (int j = 0; j < mat->getLength(); j++) {
-            result.setValue(i,j,0);
             double sum = 0;
             for (int k = 0; k < mat->getLength(); k++) {
                 sum += mat->getNumber()[i][k] * other.mat->getNumber()[k][j];
-                result.setValue(i,j,sum);
             }
+            result.setValue(i,j,sum);
         }
     }
     return result;
 }
+
 
 SquareMat SquareMat::operator*(const double &scalar) {
     SquareMat result(mat->getLength());
     for (int i = 0; i < mat->getLength(); i++) {
         for (int j = 0; j < mat->getLength(); j++) {
             double sum;
-            sum = scalar * mat->getNumber()[i][j];
+            sum =  mat->getNumber()[i][j] * scalar;
             result.setValue(i,j,sum);
         }
     }
@@ -155,11 +160,8 @@ SquareMat SquareMat::operator^(const int &power) {
         }
         return result;
     }
-    for (int i = 0; i < mat->getLength(); i++) {
-        for (int j = 0; j < mat->getLength(); j++) {
-            result.setValue(i,j,mat->getNumber()[i][j]);
-        }
-    }
+    result = *this;
+
     for (int i = 1; i < power; i++) {
         result = result * (*this);
     }
@@ -395,6 +397,7 @@ SquareMat& SquareMat::operator*=(const SquareMat& other) {
         delete[] mat->getNumber()[i];
     }
     delete[] mat->getNumber();
+    mat->setNumber(temp);
     return *this;
 }
 

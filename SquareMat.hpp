@@ -13,6 +13,7 @@ public:
     SquareMat(int length);
     ~SquareMat();
     void setValue(int row, int col, double value);
+    double getValue(int row, int col) const;
     SquareMat operator+(const SquareMat& other) const;
     SquareMat operator-(const SquareMat& other) const;
     SquareMat operator-();
