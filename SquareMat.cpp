@@ -160,10 +160,38 @@ SquareMat SquareMat::operator^(const int &power) {
         }
         return result;
     }
-    result = *this;
+    if (power == 1) {
+        for (int i = 0; i < mat->getLength(); i++) {
+            for (int j = 0; j < mat->getLength(); j++) {
+                result.setValue(i,j,mat->getNumber()[i][j]);
+            }
+        }
+        return result;
+    }
 
-    for (int i = 1; i < power; i++) {
-        result = result * (*this);
+    for (int i = 0; i < mat->getLength(); i++) {
+        for (int j = 0; j < mat->getLength(); j++) {
+            result.setValue(i,j,mat->getNumber()[i][j]);
+        }
+    }
+
+    for (int i = 1; i < power; ++i) {
+        SquareMat temp(mat->getLength());
+
+        for (int j = 0; j < mat->getLength(); ++j) {
+            for (int k = 0; k < mat->getLength(); ++k) {
+                double sum = 0;
+                for (int l = 0; l < mat->getLength(); ++l) {
+                    sum += result.mat->getNumber()[j][l] * mat->getNumber()[l][k];
+                }
+                temp.setValue(j, k, sum);
+            }
+        }
+        for (int j = 0; j < mat->getLength(); ++j) {
+            for (int k = 0; k < mat->getLength(); ++k) {
+                result.setValue(j, k, temp.getValue(j, k));
+            }
+        }
     }
     return result;
 }
@@ -453,7 +481,6 @@ std::ostream& operator<<(std::ostream& os, const SquareMat& mat) {
     }
     return os;
 }
-
 
 SquareMat SquareMat::operator[](int index) {
     if (index < 0 || index >= mat->getLength()) {

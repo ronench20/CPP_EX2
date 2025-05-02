@@ -52,9 +52,9 @@ int main() {
     SquareMat div = mat1 / 4;
     cout << div << endl;
 
-//    cout << "Matrix 1 ^ 3:" << endl;
-//    SquareMat pow = mat1 ^ 3;
-//    cout << pow << endl;
+    cout << "Matrix 1 ^ 3:" << endl;
+    SquareMat pow = mat1 ^ 3;
+    cout << pow << endl;
 
     cout << "Matrix 1++" << endl;
     SquareMat inc = ++mat1;
@@ -91,5 +91,37 @@ int main() {
     cout << (!mat1) << endl;
 
     mat1.setValue(0,2,3);
+
+    cout << "Matrix 1 += Matrix 2:" << endl;
+    mat1 += mat2;
+    cout << mat1 << endl;
+
+    cout << "Matrix 1 -= Matrix 2:" << endl;
+    mat1 -= mat2;
+    cout << mat1 << endl;
+
+    cout << "Matrix 1 *= Matrix 2:" << endl;
+    mat1 *= mat2;
+    cout << mat1 << endl;
+
+    cout << "Matrix 1 *= 2:" << endl;
+    mat1 *= 2;
+    cout << mat1 << endl;
+
+    cout << "Matrix 1 /= 2:" << endl;
+    mat1 /= 2;
+    cout << mat1 << endl;
+
+    cout << "Matrix 1 %= Matrix 2:" << endl;
+    mat1 %= mat2;
+    cout << mat1 << endl;
+
+    cout << "Matrix 1 %= 2:" << endl;
+    mat1 %= 2;
+    cout << mat1 << endl;
+
+    cout << "New values of Matrix 1:" << endl;
+    cout << mat1 << endl;
+
     return 0;
 }

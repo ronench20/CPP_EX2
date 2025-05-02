@@ -175,52 +175,52 @@ TEST_CASE("operator /"){
 }
 
 
-//TEST_CASE("operator ^"){
-//    SquareMat mat3(3);
-//    double x = 1;
-//    for (int i = 0; i < 3; ++i) {
-//        for (int j = 0; j < 3; ++j) {
-//            x++;
-//            mat3.setValue(i, j, x);
-//        }
-//    }
-//
-//    SUBCASE("power == 0") {
-//        SquareMat result = mat3 ^ 0;
-//        for (int i = 0; i < 3; ++i) {
-//            for (int j = 0; j < 3; ++j) {
-//                if (i == j){
-//                    CHECK(result.getValue(i,j) == 1);
-//                } else{
-//                    CHECK(result.getValue(i,j) == 0);
-//                }
-//            }
-//
-//        }
-//    }
-//
-//    SUBCASE("power == 1"){
-//        SquareMat result = mat3 ^ 1;
-//
-//        for (int i = 0; i < 3; ++i) {
-//            for (int j = 0; j < 3; ++j) {
-//                CHECK(result.getValue(i,j) == mat3.getValue(i,j));
-//            }
-//        }
-//    }
-//
-//    SUBCASE("power == 2"){
-//        SquareMat result = mat3 ^ 2;
-//        CHECK(result.getValue(0,0) == 954);
-//        CHECK(result.getValue(1,1) == 2160);
-//        CHECK(result.getValue(1, 2) == 2502);
-//    }
-//
-//    SUBCASE("power == -1"){
-//        CHECK_THROWS_AS(mat3 ^ -1, std::invalid_argument);
-//    }
-//}
-//
+TEST_CASE("operator ^"){
+    SquareMat mat1(3);
+    double x = 1.5;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            mat1.setValue(i, j, x);
+            x++;
+        }
+    }
+
+    SUBCASE("power == 0") {
+        SquareMat result = mat1 ^ 0;
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                if (i == j){
+                    CHECK(result.getValue(i,j) == 1);
+                } else{
+                    CHECK(result.getValue(i,j) == 0);
+                }
+            }
+
+        }
+    }
+
+    SUBCASE("power == 1"){
+        SquareMat result = mat1 ^ 1;
+
+        for (int i = 0; i < 3; ++i) {
+            for (int j = 0; j < 3; ++j) {
+                CHECK(result.getValue(i,j) == mat1.getValue(i,j));
+            }
+        }
+    }
+
+    SUBCASE("power == 2"){
+        SquareMat result = mat1 ^ 2;
+        CHECK(result.getValue(0,0) == 39.75);
+        CHECK(result.getValue(1,1) == 96.75);
+        CHECK(result.getValue(1, 2) == 113.25);
+    }
+
+    SUBCASE("power == -1"){
+        CHECK_THROWS_AS(mat1 ^ -1, std::invalid_argument);
+    }
+}
+
 
 TEST_CASE("operator ++, --"){
     SquareMat mat1(3);
@@ -316,5 +316,62 @@ TEST_CASE("operator !"){
     mat1.setValue(0,2,6);
     double result = !mat1;
     CHECK(result == -9);
+
+}
+
+TEST_CASE("Integrated placement operators"){
+    SquareMat mat1(3);
+    double x = 1.5;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            mat1.setValue(i, j, x);
+            x++;
+        }
+    }
+    SquareMat mat2(3);
+    x = 0.5;
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            mat2.setValue(i, j, x);
+            x++;
+
+        }
+    }
+
+//    SUBCASE("operator +="){
+//        mat1 += mat2;
+//        CHECK(mat1.getValue(0,0) == 2);
+//        CHECK(mat1.getValue(1,1) == 10);
+//        CHECK(mat1.getValue(2,2) == 18);
+//    }
+//
+//    SUBCASE("operator -="){
+//        mat1 -= mat2;
+//        CHECK(mat1.getValue(0,0) == 1.5);
+//        CHECK(mat1.getValue(1,1) == 5.5);
+//        CHECK(mat1.getValue(2,2) == 9.5);
+//    }
+//
+//    SUBCASE("operator *="){
+//        mat1 *= mat2;
+//        CHECK(mat1.getValue(0,0) == 32.25);
+//        CHECK(mat1.getValue(1,1) == 80.25);
+//        CHECK(mat1.getValue(2,2) == 146.25);
+//    }
+//
+//    SUBCASE("operator *="){
+//        mat1 *= 2;
+//        CHECK(mat1.getValue(0,0) == 3);
+//        CHECK(mat1.getValue(1,1) == 11);
+//        CHECK(mat1.getValue(2,2) == 19);
+//    }
+//
+//    SUBCASE("operator /="){
+//        mat1 /= 2;
+//        CHECK(mat1.getValue(0,0) == 1.5);
+//        CHECK(mat1.getValue(1,1) == 5.5);
+//        CHECK(mat1.getValue(2,2) == 9.5);
+//    }
+//
 
 }
