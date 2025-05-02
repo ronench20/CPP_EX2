@@ -3,7 +3,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include "SquareMat.hpp"
-#include "Matrix.hpp"
 #include <iostream>
 
 using namespace matrix;
@@ -321,7 +320,7 @@ TEST_CASE("operator !"){
 
 }
 
-TEST_CASE("Integrated placement operators"){
+TEST_CASE("Integrated placement operators") {
     SquareMat mat1(3);
     double x = 1.5;
     for (int i = 0; i < 3; ++i) {
@@ -340,40 +339,38 @@ TEST_CASE("Integrated placement operators"){
         }
     }
 
-    SUBCASE("operator +="){
+    SUBCASE("operators +=, -=, *=, /= for two matrices") {
         mat1 += mat2;
-        CHECK(mat1.getValue(0,0) == 2);
-        CHECK(mat1.getValue(1,1) == 10);
-        CHECK(mat1.getValue(2,2) == 18);
-    }
+        CHECK(mat1.getValue(0, 0) == 2);
+        CHECK(mat1.getValue(1, 1) == 10);
+        CHECK(mat1.getValue(2, 2) == 18);
 
-    SUBCASE("operator -="){
         mat1 -= mat2;
-        CHECK(mat1.getValue(0,0) == 1.5);
-        CHECK(mat1.getValue(1,1) == 5.5);
-        CHECK(mat1.getValue(2,2) == 9.5);
-    }
+        CHECK(mat1.getValue(0, 0) == 1.5);
+        CHECK(mat1.getValue(1, 1) == 5.5);
+        CHECK(mat1.getValue(2, 2) == 9.5);
 
-    SUBCASE("operator *="){
         mat1 *= mat2;
-        CHECK(mat1.getValue(0,0) == 32.25);
-        CHECK(mat1.getValue(1,1) == 80.25);
-        CHECK(mat1.getValue(2,2) == 146.25);
+        CHECK(mat1.getValue(0, 0) == 32.25);
+        CHECK(mat1.getValue(1, 1) == 80.25);
+        CHECK(mat1.getValue(2, 2) == 146.25);
+
+        mat1 %= mat2;
+        CHECK(mat1.getValue(0, 0) == 16.125);
+        CHECK(mat1.getValue(1, 1) == 361.125);
+
     }
 
-    SUBCASE("operator *="){
+    SUBCASE("operators *=, /= for one matrix and a scalar") {
         mat1 *= 2;
-        CHECK(mat1.getValue(0,0) == 3);
-        CHECK(mat1.getValue(1,1) == 11);
-        CHECK(mat1.getValue(2,2) == 19);
-    }
+        CHECK(mat1.getValue(0, 0) == 3);
+        CHECK(mat1.getValue(1, 1) == 11);
+        CHECK(mat1.getValue(2, 2) == 19);
 
-    SUBCASE("operator /="){
         mat1 /= 2;
-        CHECK(mat1.getValue(0,0) == 1.5);
-        CHECK(mat1.getValue(1,1) == 5.5);
-        CHECK(mat1.getValue(2,2) == 9.5);
+        CHECK(mat1.getValue(0, 0) == 1.5);
+        CHECK(mat1.getValue(1, 1) == 5.5);
+        CHECK(mat1.getValue(2, 2) == 9.5);
     }
-
 
 }

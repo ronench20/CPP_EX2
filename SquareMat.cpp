@@ -102,6 +102,18 @@ namespace matrix {
         return result;
     }
 
+    SquareMat operator*(const double &scalar, const SquareMat &other) {
+        SquareMat result(other.mat->getLength());
+        for (int i = 0; i < other.mat->getLength(); i++) {
+            for (int j = 0; j < other.mat->getLength(); j++) {
+                double sum;
+                sum = scalar * other.mat->getNumber()[i][j];
+                result.setValue(i, j, sum);
+            }
+        }
+        return result;
+    }
+
     SquareMat SquareMat::operator%(const SquareMat &other) const {
         if (mat->getLength() != other.mat->getLength()) {
             throw std::invalid_argument("Matrix sizes do not match.");

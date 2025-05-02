@@ -11,17 +11,11 @@ namespace matrix {
 
     public:
         Matrix(int length);
-
         ~Matrix();
-
         Matrix(const Matrix &other);
-
         Matrix &operator=(const Matrix &other);
-
         double **getNumber() const;
-
         int getLength() const;
-
         void setNumber(double **newNumber);
     };
 }

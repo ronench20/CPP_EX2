@@ -41,9 +41,17 @@ int main() {
     SquareMat mult = mat1 * mat2;
     cout << mult << endl;
 
-    cout << "Matrix 1 % Matrix 2:" << endl;
-    SquareMat mult1 = mat1 % mat2;
+    cout << "Matrix 1 * 3:" << endl;
+    SquareMat mult1 = mat1 * 3;
     cout << mult1 << endl;
+
+    cout << "3 * Matrix 1:" << endl;
+    SquareMat mult2 = 3 * mat1;
+    cout << mult2 << endl;
+
+    cout << "Matrix 1 % Matrix 2:" << endl;
+    SquareMat mult3 = mat1 % mat2;
+    cout << mult3 << endl;
 
     cout << "Matrix 1 % 4:" << endl;
     SquareMat mod = mat1 % 4;

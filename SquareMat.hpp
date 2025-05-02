@@ -13,66 +13,38 @@ namespace matrix {
 
     public:
         SquareMat(int length);
-
         ~SquareMat();
-
         void setValue(int row, int col, double value);
-
         double getValue(int row, int col) const;
-
         SquareMat operator+(const SquareMat &other) const;
-
         SquareMat operator-(const SquareMat &other) const;
-
         SquareMat operator-();
-
         SquareMat operator*(const SquareMat &other) const;
-
-        SquareMat operator*(const double &scalar); // not implemented in the main
+        SquareMat operator*(const double &scalar);
+        friend SquareMat operator*(const double &scalar, const SquareMat &other);
         SquareMat operator%(const SquareMat &other) const;
-
         SquareMat operator%(const double &scalar);
-
         SquareMat operator/(const double &scalar);
-
-        SquareMat operator^(const int &power); // not implemented in the main
+        SquareMat operator^(const int &power);
         SquareMat operator++();
-
         SquareMat operator--();
-
         SquareMat operator~();
-
-        SquareMat operator[](int index); // not sure if works
+        SquareMat operator[](int index);
         bool operator==(const SquareMat &other) const;
-
         bool operator!=(const SquareMat &other) const;
-
         bool operator>(const SquareMat &other) const;
-
         bool operator<(const SquareMat &other) const;
-
         bool operator>=(const SquareMat &other) const;
-
         bool operator<=(const SquareMat &other) const;
-
         double operator!();
-
         SquareMat &operator+=(const SquareMat &other);
-
         SquareMat &operator-=(const SquareMat &other);
-
         SquareMat &operator*=(const SquareMat &other);
-
         SquareMat &operator*=(const double &scalar);
-
         SquareMat &operator/=(const double &scalar);
-
         SquareMat &operator%=(const SquareMat &other);
-
         SquareMat &operator%=(const double &scalar);
-
         friend std::ostream &operator<<(std::ostream &, const SquareMat &mat);
-
     };
 }
 
