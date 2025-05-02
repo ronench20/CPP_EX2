@@ -3,6 +3,8 @@
 #include "Matrix.hpp"
 #include <iostream>
 
+namespace matrix{
+
 Matrix::Matrix(int length) : length(length) {
     number = new double*[length];
     for (int i = 0; i < length; i++) {
@@ -60,4 +62,5 @@ int Matrix::getLength() const {
 
 void Matrix::setNumber(double** newNumber) {
     number = newNumber;
+}
 }

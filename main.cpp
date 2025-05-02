@@ -4,6 +4,7 @@
 #include "SquareMat.hpp"
 
 using namespace std;
+using namespace matrix;
 
 int main() {
     SquareMat mat1(3);
